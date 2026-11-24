@@ -6,6 +6,7 @@
     <title>Визуализация</title>
     <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Убираем системную синюю подсветку при тапе на телефоне */
         * {
             -webkit-tap-highlight-color: transparent;
         }
@@ -25,9 +26,10 @@
             min-height: 100vh;
         }
 
+        /* Корпус «телефона»: лёгкий градиент вместо плоского цвета — даёт объём, как у настоящего устройства */
         .phone-bezel {
             position: relative;
-            background-color: #1c2438;
+            background: linear-gradient(160deg, #232f4a 0%, #1c2438 55%, #161d2e 100%);
             padding: 8px;
             border-radius: 35px;
             box-shadow: 0 18px 45px rgba(20, 30, 60, 0.35);
@@ -70,12 +72,13 @@
             z-index: 2;
         }
 
+        /* «Воздух» в заголовке: чуть больший трекинг, как в дорогих журналах */
         .header h1 {
             color: #2b2b2b;
             font-size: 36px;
             font-weight: 700;
             margin: 0;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
         }
 
         .header p {
@@ -83,7 +86,7 @@
             font-size: 19px;
             font-weight: 400;
             margin-top: -5px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
         .buttons-container {
@@ -98,37 +101,40 @@
             z-index: 2;
         }
 
+        /* Толстое матовое стекло: плотнее фон, сильнее блюр */
         .btn {
             display: flex;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
+            background-color: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
             color: #2b2b2b;
             padding: 16px 18px 16px 19px;
             border-radius: 25px;
             text-decoration: none;
             font-size: 22px;
-            box-shadow: 0 9px 17px rgba(0,0,0,0.10);
-            border: 0.5px solid rgba(0, 0, 0, 0.35);
-            transition: transform 0.2s;
+            box-shadow: 0 9px 17px rgba(0, 0, 0, 0.10);
+            border: 0.5px solid rgba(0, 0, 0, 0.2);
+            transition: transform 0.12s, background-color 0.12s, box-shadow 0.12s;
         }
 
+        /* Наведение: кнопка чуть приподнимается над экраном */
         .btn:hover {
-            transform: scale(1.02);
-            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(1.03) translateY(-1px);
+            background-color: rgba(255, 255, 255, 0.82);
+            box-shadow: 0 14px 22px rgba(0, 0, 0, 0.12);
         }
 
+        /* Нажатие: кнопка «продавливается» — опускается, тень сжимается */
         .btn:active {
-            transform: scale(0.98);
-            background-color: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
-            transition: transform 0.08s, box-shadow 0.08s, background-color 0.08s;
+            transform: scale(0.97) translateY(1px);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
         }
 
         .btn:focus-visible {
             outline: none;
-            box-shadow: 0 9px 17px rgba(0,0,0,0.10), 0 0 0 2px rgba(255, 255, 255, 0.9);
+            box-shadow: 0 9px 17px rgba(0, 0, 0, 0.10), 0 0 0 2px rgba(255, 255, 255, 0.9);
         }
 
         .icon-circle {
@@ -185,7 +191,7 @@
                 border-radius: 0;
                 padding: 0;
                 box-shadow: none;
-                background-color: transparent;
+                background: transparent;
             }
             .notch {
                 display: none;
@@ -280,7 +286,7 @@
                 <p>А.Е. Большакова</p>
             </div>
             <div class="buttons-container">
-                <a href="https://web.archive.org/web/20231202204627/https://bnplaw.ru/analytics/cases/vizualizatsiya-tezisov-v-ugolovnom-dele-pozitsiya-stala-ponyatnee-a-realnyy-srok-uslovnym-/#:~:text=%D1%80%D0%B5%D1%88%D0%B8%D0%BB%D0%B8%2C%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D0%BC%20%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5.-,%D0%A1%D1%85%D0%B5%D0%BC%D0%B0.%20%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B8%D0%BB%D0%B8%20%D1%83%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5%20%D0%B8%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%B0,%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%90%D0%91%20%C2%AB%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D0%BA%D0%BE%D0%B2%2C%20%D0%A7%D0%B5%D0%BB%D1%8B%D1%88%D0%B5%D0%B2%20%D0%B8%20%D0%9F%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%D1%8B%C2%BB,-%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0.%20%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D0%BB%D0%B8%20%D0%BD%D0%B5%D1%81%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5" target="_blank" rel="noopener noreferrer" class="btn">
+                <a href="https://web.archive.org/web/20231202204627/https://bnplaw.ru/analytics/cases/vizualizatsiya-tezisov-v-ugolovnom-dele-pozitsiya-stala-ponyatnee-a-realnyy-srok-uslovnym-/#:~:text=%D1%80%D0%B5%D1%88%D0%B8%D0%BB%D0%B8%2C%20%D1%80%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D0%BC%20%D0%B4%D0%B0%D0%BB%D1%8C%D1%88%D0%B5.-,%D0%A1%D1%85%D0%B5%D0%BC%D0%B0.%20%D0%A0%D0%B0%D0%B7%D0%B3%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%B8%D0%BB%D0%B8%20%D1%83%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BD%D0%BE%D0%B5%20%D0%B8%20%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5%20%D0%B4%D0%B5%D0%BB%D0%BE,%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D1%8F%D1%8E%D1%89%D0%B8%D0%B9%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%20%D0%90%D0%91%20%C2%AB%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D0%BA%D0%BE%D0%B2%2C%20%D0%A7%D0%B5%D0%BB%D1%8B%D1%88%D0%B5%D0%B2%20%D0%B8%20%D0%9F%D0%B0%D1%80%D1%82%D0%BD%D0%B5%D1%80%D1%8B%C2%BB,-%D0%A2%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0.%20%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D0%BB%D0%B8%20%D0%BD%D0%B5%D1%81%D0%BE%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B5" target="_blank" rel="noopener noreferrer" class="btn">
                     <div class="icon-circle"><img src="icon1.png" alt="Схема"></div>
                     <div class="btn-text">Схема</div>
                     <div class="arrow"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
